@@ -15,8 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 const TopBar = () => {
   const pages = [
     { name: "HOME", url: "/home" },
-    { name: "UPCOMING EVENTS", url: "/upcoming-events" },
-    { name: "PAST EVENTS", url: "/past-events" },
+    { name: "EVENTS", url: "/events" },
     { name: "MOVIE SERIES", url: "/movie-series" },
     { name: "SUPPORT", url: "/support" },
     { name: "ABOUT", url: "/about/history" },

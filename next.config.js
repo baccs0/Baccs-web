@@ -13,7 +13,17 @@ module.exports = {
   assetPrefix: assetPrefix,
   basePath: basePath,
   images: {
-    loader: "imgix",
-    path: 'the "domain" of your Imigix source',
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+      },
+    ],
   },
 };

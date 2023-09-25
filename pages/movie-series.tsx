@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import TopBar from "../components/topBar";
+import TopBar from "../src/components/topBar";
 
 const MovieSeries = () => {
   return (

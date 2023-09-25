@@ -1,15 +1,2 @@
-"use client";
-import * as React from "react";
-import TopBar from "../components/topBar";
-
-const Support = () => {
-  return (
-    <div>
-      <head>
-        <title>Baccs | Support Us</title>
-      </head>
-      <TopBar />
-    </div>
-  );
-};
+import Support from "../src/libs/events";
 export default Support;
