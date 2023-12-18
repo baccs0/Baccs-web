@@ -34,16 +34,6 @@ export const EventCarousel = () => {
       (prevIndex) => (prevIndex - 1 + posts.length) % posts.length
     );
   };
-  const buttonStyle = {
-    position: "absolute",
-    top: "50%",
-    transform: "translateY(-50%)",
-    zIndex: "1",
-    background: "none",
-    border: "none",
-    fontSize: "24px",
-    cursor: "pointer",
-  };
 
   return (
     <div
@@ -71,10 +61,35 @@ export const EventCarousel = () => {
           />
         ))}
       </div>
-      <button onClick={prevSlide} style={buttonStyle}>
+      <button
+        onClick={prevSlide}
+        style={{
+          position: "absolute",
+          top: "50%",
+          transform: "translateY(-50%)",
+          zIndex: "1",
+          background: "none",
+          border: "none",
+          fontSize: "24px",
+          cursor: "pointer",
+        }}
+      >
         <span>&#8249;</span>
       </button>
-      <button onClick={nextSlide} style={{ ...buttonStyle, right: "10px" }}>
+      <button
+        onClick={nextSlide}
+        style={{
+          position: "absolute",
+          top: "50%",
+          transform: "translateY(-50%)",
+          zIndex: "1",
+          background: "none",
+          border: "none",
+          fontSize: "24px",
+          cursor: "pointer",
+          right: "10px",
+        }}
+      >
         <span>&#8250;</span>
       </button>
     </div>
