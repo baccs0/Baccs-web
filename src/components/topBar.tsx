@@ -1,167 +1,65 @@
 "use client";
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/router";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+
 const TopBar = () => {
   const pages = [
-    { name: "HOME", url: "/home" },
-    { name: "EVENTS", url: "/events" },
-    { name: "MOVIE SERIES", url: "/movie-series" },
-    { name: "SUPPORT", url: "/support" },
-    { name: "ABOUT", url: "/about/history" },
-    { name: "JOIN US", url: "/join" },
+    { name: "Home", url: "/pages/home" },
+    { name: "Events", url: "/pages/events" },
+    { name: "Movie Series", url: "/pages/movie-series" },
+    { name: "Support", url: "/pages/support" },
+    { name: "About", url: "/pages/about/history" },
   ];
-
   const aboutPages = [
-    { name: "THANK YOU", url: "/about/thanks" },
-    { name: "HISTORY", url: "/about/history" },
+    { name: "Thank You", url: "/about/thanks" },
+    { name: "History", url: "/about/history" },
   ];
+  const appBarStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "1280px",
+    marginTop: "21px",
+  };
+  const orgNameStyle = {
+    alignItems: "center",
+    display: "flex",
+    fontSize: "20px",
+  };
+  const navStyle = {
+    alignItems: "center",
+    fontSize: "16px",
+  };
 
+  const liStyle = {
+    display: "inline",
+    marginRight: "15px", // Adjust as needed for spacing between navigation items
+  };
+
+  const linkStyle = {
+    textDecoration: "none",
+    color: "#333", // Adjust the color as needed
+    fontWeight: "bold",
+  };
   const router = useRouter();
-
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const [anchorElAboutNav, setAnchorElAboutNav] =
-    React.useState<null | HTMLElement>(null);
-  const handleOpenAboutNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElAboutNav(event.currentTarget);
-  };
   return (
-    <AppBar position="sticky">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            <Avatar
-              alt="logo"
-              src="https://baccs.org/wp-content/uploads/2020/07/Logo-final.svg"
-            />
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              anchorEl={anchorElNav}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={() => setAnchorElNav(null)}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              <Menu
-                id="about-menu-appbar"
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                anchorEl={anchorElAboutNav}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElAboutNav)}
-                onClose={() => setAnchorElAboutNav(null)}
-                sx={{
-                  display: { xs: "block" },
-                }}
-              >
-                {aboutPages.map((page) => (
-                  <MenuItem
-                    key={page.name}
-                    onClick={() => {
-                      router.push(page.url);
-                    }}
-                  >
-                    <Typography textAlign="center">{page.name}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-              {pages.map((page) => (
-                <MenuItem
-                  key={page.name}
-                  onClick={() => {
-                    router.push(page.url);
-                  }}
-                >
-                  <Typography textAlign="center">{page.name}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Avatar
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-            alt="logo"
-            src="https://baccs.org/wp-content/uploads/2020/07/Logo-final.svg"
-          />
-
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div className="app-bar" style={appBarStyle}>
+        <div style={orgNameStyle}>
+          Bay Area Chinese Culture Salon &#40;BACCS&#41;
+        </div>
+        <nav style={navStyle}>
+          <ul>
             {pages.map((page) => (
-              <Button
-                key={page.name}
-                onClick={(e) => {
-                  if (page.name !== "ABOUT") {
-                    router.push(page.url);
-                  } else {
-                    handleOpenAboutNavMenu(e);
-                  }
-                }}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page.name}
-              </Button>
+              <li style={liStyle}>
+                <a style={linkStyle} href={page.url}>
+                  {page.name}
+                </a>
+              </li>
             ))}
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+          </ul>
+        </nav>
+      </div>
+    </div>
   );
 };
 export default TopBar;

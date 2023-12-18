@@ -3,10 +3,8 @@ import { useState, useEffect, useCallback } from "react";
 import { fetchAPI } from "../../app/fetch-api";
 import TopBar from "../../components/topBar";
 import { EventCarousel } from "../../components/carousel";
-
+import { EventHomeList } from "../../components/event-home-list";
 import Loader from "../../components/loader";
-import PostList from "../../components/post-list";
-import PageHeader from "../../components/page-header";
 import { Meta } from "../types";
 
 const HomePage = () => {
@@ -55,32 +53,21 @@ const HomePage = () => {
   if (isLoading) return <Loader />;
 
   return (
-    <div>
-      <head>
-        <title>Baccs | Home</title>
-        <link
-          rel="icon"
-          type="image/x-icon"
-          href="https://baccs.org/wp-content/uploads/2020/07/Logo-final.svg"
-        />
-      </head>
-      <TopBar />
-      <EventCarousel />
+    <div style={{ fontFamily: "Spline Sans, sans-serif" }}>
       <div>
-        <PageHeader heading="Our Blog" text="Checkout Something Cool" />
-        <PostList data={data}>
-          {start + limit < total && (
-            <div className="flex justify-center">
-              <button
-                type="button"
-                className="px-6 py-3 text-sm rounded-lg hover:underline dark:bg-gray-900 dark:text-gray-400"
-                onClick={loadMorePosts}
-              >
-                Load more posts...
-              </button>
-            </div>
-          )}
-        </PostList>
+        <head>
+          <title>Baccs | Home</title>
+          <link
+            rel="icon"
+            type="image/x-icon"
+            href="https://baccs.org/wp-content/uploads/2020/07/Logo-final.svg"
+          />
+        </head>
+        <TopBar />
+        <EventCarousel />
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <EventHomeList />
+        </div>
       </div>
     </div>
   );

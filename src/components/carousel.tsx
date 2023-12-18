@@ -1,9 +1,8 @@
-import React from "react";
-import Carousel from "react-material-ui-carousel";
-import { Paper } from "@mui/material";
-import { Box } from "@mui/material";
+import React, { useState } from "react";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 export const EventCarousel = () => {
-  var items = [
+  const posts = [
     {
       name: "Random Name #1",
       description: "Probably the most random thing you have ever seen!",
@@ -25,31 +24,59 @@ export const EventCarousel = () => {
       url: "https://roxie.com/wp-content/uploads/2023/07/03-Jinpa-2018.jpg",
     },
   ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % posts.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + posts.length) % posts.length
+    );
+  };
+  const buttonStyle = {
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    zIndex: "1",
+    background: "none",
+    border: "none",
+    fontSize: "24px",
+    cursor: "pointer",
+  };
 
   return (
-    <Carousel>
-      {items.map((item, i) => (
-        <Item key={i} item={item} />
-      ))}
-    </Carousel>
-  );
-};
-
-const Item = (props) => {
-  return (
-    <Paper>
-      <Box
-        sx={{
-          display: { xs: "flex" },
-          justifyContent: "center",
-          width: "100%",
+    <div
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        width: "100%",
+        height: "640px",
+        margin: "0 auto",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          transition: "transform 0.5s",
+          transform: `translateX(-${currentIndex * 100}%)`,
         }}
       >
-        <img
-          src={props.item.url}
-          style={{ objectFit: "contain", height: "600px", width: "auto" }}
-        />
-      </Box>
-    </Paper>
+        {posts.map((post, index) => (
+          <img
+            key={index}
+            src={post.url}
+            alt={`slide-${index + 1}`}
+            style={{ width: "100%", flex: "0 0 auto" }}
+          />
+        ))}
+      </div>
+      <button onClick={prevSlide} style={buttonStyle}>
+        <span>&#8249;</span>
+      </button>
+      <button onClick={nextSlide} style={{ ...buttonStyle, right: "10px" }}>
+        <span>&#8250;</span>
+      </button>
+    </div>
   );
 };
