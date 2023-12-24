@@ -1,14 +1,13 @@
 "use client";
 import * as React from "react";
-import { useRouter } from "next/router";
-
+import Link from "next/link";
 const TopBar = () => {
   const pages = [
-    { name: "Home", url: "/pages/home" },
-    { name: "Events", url: "/pages/events" },
-    { name: "Movie Series", url: "/pages/movie-series" },
-    { name: "Support", url: "/pages/support" },
-    { name: "About", url: "/pages/about/history" },
+    { name: "Home", url: "/home" },
+    { name: "Events", url: "/events" },
+    { name: "Movie Series", url: "/movie-series" },
+    { name: "Support", url: "/support" },
+    { name: "About", url: "/history" },
   ];
   const aboutPages = [
     { name: "Thank You", url: "/about/thanks" },
@@ -40,7 +39,7 @@ const TopBar = () => {
     color: "#333", // Adjust the color as needed
     fontWeight: "bold",
   };
-  const router = useRouter();
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div className="app-bar" style={appBarStyle}>
@@ -51,9 +50,9 @@ const TopBar = () => {
           <ul>
             {pages.map((page) => (
               <li style={liStyle}>
-                <a style={linkStyle} href={page.url}>
+                <Link href={page.url} style={linkStyle}>
                   {page.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

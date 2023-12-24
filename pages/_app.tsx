@@ -19,6 +19,14 @@ export default function App({ Component, pageProps }: AppProps) {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </head>
+      <head>
+        <title>Baccs | Home</title>
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="https://baccs.org/wp-content/uploads/2020/07/Logo-final.svg"
+        />
+      </head>
       <Component {...pageProps} />
     </>
   ) : null;
